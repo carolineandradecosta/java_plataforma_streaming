@@ -1,4 +1,6 @@
 import br.com.alura.screenmatch.calculos.CalculadoraDeTempo;
+import br.com.alura.screenmatch.calculos.FiltroRecomendacao;
+import br.com.alura.screenmatch.modelos.Episodio;
 import br.com.alura.screenmatch.modelos.Filme;
 import br.com.alura.screenmatch.modelos.Serie;
 import br.com.alura.screenmatch.modelos.Titulo;
@@ -50,6 +52,18 @@ public class Principal {
     calculadora.inclui(outroFilme);
     System.out.println(calculadora.getTempoTotal());
 
-    }
+            // testando o Filtro de Recomendação
+    FiltroRecomendacao filtro = new FiltroRecomendacao();
+    filtro.filtra(outroFilme);
 
+            // instanciando um episódio
+    Episodio episodio = new Episodio();
+    episodio.setNumero(1);
+    episodio.setSerie(lost);
+    episodio.setTotalVisualizacoes(300);
+
+            // testando o filtro de recomendação com o novo episódio criado
+    filtro.filtra(episodio);
+
+    }
 }
