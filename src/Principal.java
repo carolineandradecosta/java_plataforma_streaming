@@ -19,9 +19,9 @@ public class Principal {
 //        meuFilme.incluidoNoPlano = true;
 
 
-        Titulo meuTitulo = new Filme();
-        meuTitulo.setNome("The Matrix");
-        meuTitulo.setAnoDeLancamento(1999);
+        Titulo meuTitulo = new Filme("The Matrix", 1999);
+        //meuTitulo.setNome("The Matrix");
+        //meuTitulo.setAnoDeLancamento(1999);
         meuTitulo.setDuracaoEmMinutos(135);
 
         meuTitulo.exibeFichaTecnica();
@@ -33,18 +33,18 @@ public class Principal {
 //        System.out.println("Total de avaliações: " + meuTitulo.getTotalDeAvaliacoes());
 
             // instanciando uma série
-    Serie lost = new Serie();
-    lost.setNome("Lost");
-    lost.setAnoDeLancamento(2000);
+    Serie lost = new Serie("Lost", 2000);
+    //lost.setNome("Lost");
+    //lost.setAnoDeLancamento(2000);
     lost.setTemporadas(10);
     lost.setEpisodiosPorTemporada(10);
     lost.setMinutosPorEpisodio(50);
     System.out.println("Duração para maratonar Lost: " + lost.getDuracaoEmMinutos());
 
             // instanciando outro filme
-    Filme outroFilme = new Filme();
-    outroFilme.setNome("O poderoso chefão");
-    outroFilme.setAnoDeLancamento(1970);
+    Filme outroFilme = new Filme("O poderoso chefão", 1970);
+    //outroFilme.setNome("O poderoso chefão");
+    //outroFilme.setAnoDeLancamento(1970);
     outroFilme.setDuracaoEmMinutos(180);
 
             // testando a Calculadora de Tempo
@@ -68,8 +68,8 @@ public class Principal {
     filtro.filtra(episodio);
 
             // instanciando outro filme
-    var filmeDoPaulo = new Filme();
-    filmeDoPaulo.setNome("Dogville");
+    var filmeDoPaulo = new Filme("Dogville", 2003);
+    //filmeDoPaulo.setNome("Dogville");
     filmeDoPaulo.setDuracaoEmMinutos(200);
     filmeDoPaulo.setAnoDeLancamento(2003);
     filmeDoPaulo.avalia(10);
