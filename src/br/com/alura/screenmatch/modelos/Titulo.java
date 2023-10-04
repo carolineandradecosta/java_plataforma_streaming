@@ -1,6 +1,6 @@
 package br.com.alura.screenmatch.modelos;
 
-public class Titulo {
+public class Titulo implements Comparable<Titulo>{
     private String nome;
     private int anoDeLancamento;
     private boolean incluidoNoPlano;
@@ -66,5 +66,10 @@ public class Titulo {
     }
 
 
-
+    @Override
+    public int compareTo(Titulo outroTitulo) {
+        return this.getNome().compareTo(outroTitulo.getNome());
+    }
+            // a clase Título precisou implementar a interface Comparable e reescrever sua propria
+            // regra de ordenação, nesse caso o critério é comprar o nome do título com outro
 }

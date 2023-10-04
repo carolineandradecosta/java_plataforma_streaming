@@ -4,7 +4,7 @@ import br.com.alura.screenmatch.modelos.Filme;
 import br.com.alura.screenmatch.modelos.Serie;
 import br.com.alura.screenmatch.modelos.Titulo;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class PrincipalComListas {
     public static void main(String[] args) {
@@ -20,7 +20,10 @@ public class PrincipalComListas {
         var lost = new Serie("Lost", 2000);
 
 
-        ArrayList<Titulo> lista = new ArrayList<>();
+        //ArrayList<Titulo> lista = new ArrayList<>();
+        // Lista é uma interface, é mais comum utilizar dessa forma
+        // LinkedLista é uma lista ligada  que faz o mesmo trabalho do ArrayList
+        List<Titulo> lista = new LinkedList<>();
         lista.add(filmeDoPaulo);
         lista.add(outroFilme);
         lista.add(lost);
@@ -34,5 +37,25 @@ public class PrincipalComListas {
                 // o instanceof verifica se o item é um filme e automaticamente declara uma variável para fazer um casting
                 // e mostra apenas os filmes com classificação maior que 2
 
+        ArrayList<String> buscaPorArtista = new ArrayList<>();
+        buscaPorArtista.add("Adam Sandler");
+        buscaPorArtista.add("Paulo");
+        buscaPorArtista.add("Jacqueline");
+        System.out.println(buscaPorArtista);
+
+        Collections.sort(buscaPorArtista);
+        System.out.println("Depois da ordenação");
+        System.out.println(buscaPorArtista);
+
+        System.out.println("Lista de titulos ordenados");
+        Collections.sort(lista);
+        System.out.println(lista);
+                // o Collections.Sort(lista) não compilava pq não existia uma regra de comparação
+
+        lista.sort(Comparator.comparing(Titulo::getAnoDeLancamento));
+                // forma mais moderna para realizar comparações
+
+        System.out.println("Ordenando por ano");
+        System.out.println(lista);
     }
 }
