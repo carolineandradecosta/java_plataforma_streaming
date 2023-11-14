@@ -35,7 +35,7 @@ public class PrincipalComBusca {
         Gson gson = new Gson();
                 // Desserialização: recebe um json e transforma em uma classe do tipo Titulo
         Titulo meuTitulo = gson.fromJson(json, Titulo.class);
-        System.out.println("Título: " + meuTitulo.getNome());
+        System.out.println(meuTitulo);
 
     }
 }
