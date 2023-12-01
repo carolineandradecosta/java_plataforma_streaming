@@ -43,5 +43,11 @@ public class PrincipalComBusca {
         TituloOmdb meuTituloOmdb = gson.fromJson(json, TituloOmdb.class);
         System.out.println(meuTituloOmdb);
 
+        // eu quero continuar utilizando o "meuTitulo" pq é um título e a classe título está mais completa
+        // a classe títuloOmdb é como se fosse uma classe fazer fazer o intermédio
+        Titulo meuTitulo = new Titulo(meuTituloOmdb);
+        System.out.println("Título já convertido");
+        System.out.println(meuTitulo);
+
     }
 }

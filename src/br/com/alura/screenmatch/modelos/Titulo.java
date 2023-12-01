@@ -17,6 +17,13 @@ public class Titulo implements Comparable<Titulo>{
         this.anoDeLancamento = anoDeLancamento;
     }
 
+    // para fazer o construtor tem que converter pq está vindo tudo como string
+    public Titulo(TituloOmdb meuTituloOmdb) {
+        this.nome = meuTituloOmdb.title();
+        this.anoDeLancamento = Integer.valueOf(meuTituloOmdb.year());
+        this.duracaoEmMinutos = Integer.valueOf(meuTituloOmdb.runtime().substring(0,2));
+    }
+
     public int getTotalDeAvaliacoes(){
         return totalDeAvaliacoes;
     }
@@ -81,6 +88,8 @@ public class Titulo implements Comparable<Titulo>{
     @Override
     public String toString() {
         return "nome='" + nome + '\'' +
-                ", anoDeLancamento=" + anoDeLancamento;
+                ", anoDeLancamento=" + anoDeLancamento + "," +
+                " duração " + duracaoEmMinutos;
+
     }
 }
