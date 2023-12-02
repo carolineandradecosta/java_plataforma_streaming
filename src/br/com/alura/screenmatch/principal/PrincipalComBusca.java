@@ -21,33 +21,45 @@ public class PrincipalComBusca {
 
         String endereco = "http://www.omdbapi.com/?t=" + busca + "&apikey=246c131b";
 
-        HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(endereco))
-                .build();
+        try {
+            HttpClient client = HttpClient.newHttpClient();
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(endereco))
+                    .build();
 
-        HttpResponse<String> response = client
-                .send(request, HttpResponse.BodyHandlers.ofString());
+            HttpResponse<String> response = client
+                    .send(request, HttpResponse.BodyHandlers.ofString());
 
-                // guardando em uma variável o json que é o response.body();
-        String json = response.body();
-        System.out.println(json);
+            // guardando em uma variável o json que é o response.body();
+            String json = response.body();
+            System.out.println(json);
 
-                // criando uma instância da classe Gson
-                // essa classe foi baixada separadamente e adicionada ao projeto
-        Gson gson = new GsonBuilder()
-                .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
-                .create();
-                // Desserialização: recebe um json e transforma em uma classe do tipo Titulo
-        //Titulo meuTitulo = gson.fromJson(json, Titulo.class);
-        TituloOmdb meuTituloOmdb = gson.fromJson(json, TituloOmdb.class);
-        System.out.println(meuTituloOmdb);
+            // criando uma instância da classe Gson
+            // essa classe foi baixada separadamente e adicionada ao projeto
+            Gson gson = new GsonBuilder()
+                    .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
+                    .create();
+            // Desserialização: recebe um json e transforma em uma classe do tipo Titulo
+            //Titulo meuTitulo = gson.fromJson(json, Titulo.class);
+            TituloOmdb meuTituloOmdb = gson.fromJson(json, TituloOmdb.class);
+            System.out.println(meuTituloOmdb);
 
-        // eu quero continuar utilizando o "meuTitulo" pq é um título e a classe título está mais completa
-        // a classe títuloOmdb é como se fosse uma classe fazer fazer o intermédio
-        Titulo meuTitulo = new Titulo(meuTituloOmdb);
-        System.out.println("Título já convertido");
-        System.out.println(meuTitulo);
+            // eu quero continuar utilizando o "meuTitulo" pq é um título e a classe título está mais completa
+            // a classe títuloOmdb é como se fosse uma classe fazer fazer o intermédio
+            // o try - catch elabora o tratamento de exceção
+            //try {
+            Titulo meuTitulo = new Titulo(meuTituloOmdb);
+            System.out.println("Título já convertido");
+            System.out.println(meuTitulo);
+        } catch (NumberFormatException e) {
+            System.out.println("Aconteceu um erro: ");
+            System.out.println(e.getMessage());
+        } catch (IllegalArgumentException e) {
+            System.out.println("Algum erro de argumento na busca, verifiquei o endereço");
+        }
+
+        System.out.println("O programa finalizou corretamente!");
+
 
     }
 }
